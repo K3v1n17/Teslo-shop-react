@@ -5,24 +5,22 @@ import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
 import { formatCurrency } from "@/lib/currency-formatter";
-import { products } from "@/mocks/products.mocks";
 import { useProduct } from "@/shop/hooks/useProduct";
 import { PencilIcon, PlusIcon } from "lucide-react";
 import { Link } from "react-router";
 
 export const AdminProductsPage = () => {
 
-  const { data  , isLoading} = useProduct()
+  const { data, isLoading } = useProduct()
 
-  if(isLoading) {
-    return <CustomFullScreenLoading/>
+  if (isLoading) {
+    return <CustomFullScreenLoading />
   }
 
 
@@ -70,7 +68,7 @@ export const AdminProductsPage = () => {
                 />
               </TableCell>
               <TableCell>
-                 <Link to={`/admin/products/${product.id}`} className="hover:text-blue-500 underline">{product.title} </Link>
+                <Link to={`/admin/products/${product.id}`} className="hover:text-blue-500 underline">{product.title} </Link>
 
               </TableCell>
               <TableCell>{formatCurrency(product.price)}</TableCell>
@@ -79,14 +77,14 @@ export const AdminProductsPage = () => {
               <TableCell>{product.sizes.join(', ')}</TableCell>
               <TableCell className="text-right">
                 <Link to={`/admin/products/${product.id}`}>
-                  <PencilIcon className="w-4 h-4 text-blue-500"/>
+                  <PencilIcon className="w-4 h-4 text-blue-500" />
                 </Link>
               </TableCell>
             </TableRow>
           ))}
-          </TableBody>
-     
-      
+        </TableBody>
+
+
       </Table>
 
       <CustomPagination totalPages={data?.pages || 0} />
