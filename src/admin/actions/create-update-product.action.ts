@@ -1,7 +1,6 @@
 import { tesloApi } from "@/api/tesloApi";
 import type { Product } from "@/interfaces/product.interface";
 import { sleep } from "@/lib/sleep";
-import { data } from "react-router";
 
 export const createUpdateProdutAction = async (
   productLike: Partial<Product> & { files?: File[] },
